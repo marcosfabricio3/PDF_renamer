@@ -1,0 +1,16 @@
+{
+  "name": "pdf_renamer",
+  "version": "1.0.0",
+  "description": "",
+  "license": "Apache License 2.0",
+  "author": "marcos garcia",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^39.2.5"
+  }
+}
