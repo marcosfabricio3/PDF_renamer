@@ -2,7 +2,7 @@
   "name": "pdf_renamer",
   "version": "1.0.0",
   "description": "",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "author": "marcos garcia",
   "type": "commonjs",
   "main": "main.js",
@@ -11,6 +11,8 @@
     "start": "electron ."
   },
   "dependencies": {
+  },
+  "devDependencies": {
     "electron": "^39.2.5"
   }
 }

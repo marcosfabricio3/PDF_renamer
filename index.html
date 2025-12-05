@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Hello world!   Soy el renombrador de PDFs</h1>
-</body>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1 id="appTitle">PDF Renamer</h1>
+        <!-- este input text sera un dropdown para elegir el idioma de la app -->
+        <input id="lenguageChangeBtn" type="text" />
+        <label for="lenguageChangeBtn"></label>
+        <!-- cambiar el tema de claro a oscuro -->
+        <input id="themeToggle" type="checkbox" />
+        <label for="themeToggle"></label>
+      </header>
+
+      <main>
+        <!-- drag and dorp y boton para seleccionar el pdf -->
+        <section id="selectorPdf"></section>
+        <!-- seccion para mostrar el archivo seleccionado -->
+        <section id="selectedFile"></section>
+
+        <!-- seccion con los checkbox -->
+        <section id="checkboxContainer">
+          <!-- para agregar la fecha -->
+          <input id="includeDateCheckbox" type="checkbox" />
+          <label for="includeDateCheckbox"></label>
+          <!-- por si quiere revisar previamente si el archivo tiene virus (virus total) -->
+          <input id="checkMalwareCheckbox" type="checkbox" />
+          <label for="checkMalwareCheckbox"></label>
+        </section>
+
+        <!-- boton para renombrar el pdf -->
+        <button id="renameBtn">Rename</button>
+
+        <!-- zona de mensajes de estado al renombrar o no los PDF -->
+        <section id="statusMessage"></section>
+      </main>
+
+      <aside id="profilesList">
+        <h2 id="listTitle">Names List</h2>
+        <section id="profilesAndListContainer"></section>
+        <button id="newProfileBtn">Add Name</button>
+      </aside>
+
+      <footer id="footerSection">
+        <p>trabajando en ello</p>
+      </footer>
+    </div>
+
+    <script src="render.js"></script>
+  </body>
 </html>
