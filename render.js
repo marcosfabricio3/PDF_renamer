@@ -12,10 +12,13 @@ const renameBtn = document.getElementById("renameBtn");
 const statusMessage = document.getElementById("statusMessage");
 
 // aside
-const profilesAndListContainer = document.getElementById(
-  "profilesAndListContainer"
-);
+const profilesAndListContainer = document.getElementById("profilesAndListContainer");
 const newProfileBtn = document.getElementById("newProfileBtn");
+
+// input para agregar nombre
+const containerInputNewProfile = document.getElementById('containerInputNewProfile')
+const newProfileInput = document.getElementById('newProfileInput')
+const addProfileBtn = document.getElementById('addProfileBtn')
 
 let profiles = [];
 let selectedProfile = null;
@@ -33,28 +36,54 @@ function renderProfiles() {
       const allButtons = profilesAndListContainer.querySelectorAll("button");
       allButtons.forEach((btn) => btn.classList.remove("profileActive"));
 
-      button.classList.toggle("profileActive");
+      button.classList.add("profileActive");
     });
 
     profilesAndListContainer.appendChild(button);
   });
 }
 
-// El nombre tonga es un ejemplo, porque cuando funcione en el futuro sera con un nombre extraido de una variable
-let nombreDeEjemplo = "tonga";
-
 function addNameToList(name) {
   if (typeof name !== "string" || !name.trim()) {
     return console.log("Nombre Invalido");
-  } else {
-    const nameClean = name.trim();
-    profiles.push(nameClean);
-    console.log("nombre almasenado ", nameClean);
-
-    renderProfiles();
   }
+
+  const nameClean = name.trim();
+  const nameToComparate = nameClean.toLocaleLowerCase()
+
+  if(profiles.some(p => p.toLocaleLowerCase() === nameToComparate)) {
+    return console.log('nombre repetido ', nameToComparate)
+  }
+
+  profiles.push(nameClean);
+  console.log("nombre almasenado ", nameClean);
+  containerInputNewProfile.classList.add('hidden')
+  renderProfiles();
+  
 }
 
-newProfileBtn.addEventListener("click", () => {
-  addNameToList(nombreDeEjemplo);
-});
+// ------------------------------------------------------------------------------------------------
+
+newProfileBtn.addEventListener("click", (e) => {
+  e.stopPropagation()
+  containerInputNewProfile.classList.remove('hidden')
+  newProfileInput.focus()
+})
+
+document.addEventListener("click", (e) => {
+  if (!containerInputNewProfile.contains(e.target)) {
+    containerInputNewProfile.classList.add('hidden')
+  }
+})
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === 'Escape') {
+    containerInputNewProfile.classList.add('hidden')
+  }
+})
+
+addProfileBtn.addEventListener('click', () => {
+  const newProfile = newProfileInput.value
+  addNameToList(newProfile)
+  newProfileInput.value = ""
+})
